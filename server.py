@@ -4,7 +4,7 @@ from random   import *  #-
 from constRPC import *  #-
 #-
 class Server:
-  def __init__(self, port=PORTS): #-
+  def __init__(self, port=PORT): #-
     self.host = 'localhost'               # this machine                     #-
     self.port = port                      # the port it will listen to       #-
     self.sock = socket()                  # socket for incoming calls        #-

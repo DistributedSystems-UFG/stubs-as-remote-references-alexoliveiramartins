@@ -28,3 +28,6 @@ class DBClient:
   def appendData(self, data):
     assert self.listID != None #-
     return self.__sendrecv([APPEND, data, self.listID])
+  
+  def stop(self):
+    self.__sendrecv([STOP])
