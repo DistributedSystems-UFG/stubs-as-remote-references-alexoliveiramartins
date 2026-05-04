@@ -4,9 +4,9 @@ from constRPC import * #-
 #-
 class DBClient:
   def __init__(self, host, port, listID=None):  #-
-    self.host   = host     # address of server hosting lists        #-
-    self.port   = port     # the port it will be listening to       #-
-    self.listID = listID   # the list for which this stub is meant  #-
+    self.host   = host            # address of server hosting lists        #-
+    self.port   = port            # the port it will be listening to       #-
+    self.listID = listID          # the list for which this stub is meant  #-
 #-
   def __sendrecv(self, message):           # this is a private method
     sock = socket()                        # create a socket
