@@ -8,9 +8,41 @@ This is a simple example to demonstrate how stubs can be used as remote referenc
 
 ## Funcionamento do programa
 
-descreva o mecanismo demonstrado no exemplo e discuta como ele pode ser generalizado
-
 - `client.py` funciona como um cliente que envia requests para o servidor
 - `server.py` interpreta chamadas com formato \[OPERAÇÃO, dados, id_lista\] e armazena as listas do "banco de dados"
 - `dbclient.py` funciona como um serviço de banco de dados criando, consultando e fazendo append de listas
 - `run.py` simula o envio por 2 clientes para 1 servidor de um criando duas listas, cada uma por um cliente com um identficador "Cliente N". No final a classe Server mostra as duas listas depois da operação de APPEND.
+
+## Resultado
+
+- Criados arquivos para rodar no client (run_client.py) e servidor (run_server.py)
+- Cada client usa os stubs de dbclient e cria uma lista (CREATE) e faz 3 appends (APPEND), lista os itens da lista local (GETVALUE) e depois encerra o servidor (STOP)
+- O servidor guarda as listas criadas por cada client
+
+- Resultado no client 1
+```
+[ec2-user@ip-172-31-58-105 stubs-as-remote-references-alexoliveiramartins]$ python3 run_client.py 
+['Client 100.26.50.212', 'Item 2', 'Item 3']
+Digite qualquer coisa para parar o servidor (STOP):
+```
+
+- Resultado no client 2
+```
+[ec2-user@ip-172-31-63-230 stubs-as-remote-references-alexoliveiramartins]$ python3 run_client.py 
+['Client 100.26.209.70', 'Item 2', 'Item 3']
+Digite qualquer coisa para parar o servidor (STOP):
+```
+
+## Execucao
+
+> Obs: Configurar ip do servidor em `constRPC.py`
+
+- Na maquina servidor 
+```bash
+python3 run_server.py
+```
+
+- Nas (n) maquinas client
+```bash
+python3 run_client.py
+```
